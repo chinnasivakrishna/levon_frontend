@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { getStudents } from '../services/api';
+import './Dashboard.css';
 
 const StudentDashboard = () => {
   const [students, setStudents] = useState([]);
@@ -16,13 +17,19 @@ const StudentDashboard = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Student Dashboard</h1>
-      <ul>
-        {students.map((student) => (
-          <li key={student._id}>{student.name} - {student.grade}</li>
-        ))}
-      </ul>
+    <div className="dashboard-container">
+      <h1 className="dashboard-header">Student Dashboard</h1>
+      <div className="dashboard-content">
+        {students.length ? (
+          <ul className="student-list">
+            {students.map((student) => (
+              <li key={student._id}>{student.name} - {student.grade}</li>
+            ))}
+          </ul>
+        ) : (
+          <p>No students found.</p>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,10 +1,31 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://levon-backend-6yla.onrender.com';
+
+export const registerStudent = async (studentData) => {
+  try {
+    const response = await axios.post(`${API_URL}/students/register`, studentData);
+    return response.data;
+  } catch (error) {
+    console.error('Error registering student', error);
+    return { success: false, message: 'Registration failed' };
+  }
+};
+
+export const registerTeacher = async (teacherData) => {
+  try {
+    const response = await axios.post(`${API_URL}/teachers/register`, teacherData);
+    return response.data;
+  } catch (error) {
+    console.error('Error registering teacher', error);
+    return { success: false, message: 'Registration failed' };
+  }
+};
+
 
 export const login = async (email, password) => {
   try {
-    const response = await axios.post(`${API_URL}/login`, { email, password });
+    const response = await axios.post(`${API_URL}/auth/login`, { email, password });
     return response.data;
   } catch (error) {
     console.error('Error logging in', error);
