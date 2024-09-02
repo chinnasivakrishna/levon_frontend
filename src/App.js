@@ -9,8 +9,8 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" exact element={<Login />} />
-        <Route path="/student-dashboard" component={<StudentDashboard />} />
-        <Route path="/teacher-dashboard" component={<TeacherDashboard />} />
+        <Route path="/student-dashboard" element={<StudentDashboard />} />
+        <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
       </Routes>
     </Router>
   );
